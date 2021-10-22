@@ -1,0 +1,14 @@
+git status :- check it is repository or not
+git init :- initializes git repository 
+git add --a :- all file are in staging area
+git add filename :- only file we want to commit
+
+rm -rf .git :- remove git repository
+
+touch error.log :- create log file
+
+touch .gitignore :- in .gitignore file insert name of error.log file name to ignore 
+
+git diff :- staging area and working directiory compare 
+
+git commit -a -m " "
