@@ -1,0 +1,111 @@
+
+
+public void selectQueue() throws Exception {
+    if (org.apache.commons.lang3.StringUtils.isBlank(qmanager.preselectedQueue())) {
+        Map<String, String> envVariables = server.getEnvironmentVariables();
+        String queueName = envVariables.get("queueName").toString();
+        currentQueue = getQueueFromQueueName(queueName);
+        selectedQueueID = currentQueue.queueId();
+        server.warn("No queue selected" + selectedQueueID);
+    } else {
+        selectedQueueID = qmanager.preselect
+
+
+===========================================================================================
+
+CreateItem:
+
+public void createItem() throws JidokaQueueException {
+    if (!rows.isEmpty()) {
+        try {
+            CreateItemParameters itemParameters = new  CreateItemParameters();
+            List<List<String>> rowsData = rows.stream().distinct().collect(Collectors.toList());
+            List<List<String>> noRepeat = new  ArrayList<List<String>>();
+            for (List<String> list1 : rowsData) {
+                boolean isFound = false;
+                for (List<String> list2 : noRepeat) {
+         
+==============================================================================================
+
+/** Update Queue Again After Closing **/
+@SuppressWarnings({ "rawtypes", "unchecked" })
+public void updateQueueStatus() throws Exception {
+    try {
+        ReserveQueueParameters rqp = new  ReserveQueueParameters();
+        Map<String, String> envVariables = server.getEnvironmentVariables();
+        String queueName = envVariables.get("queueName").toString();
+        rqp.setName(queueName);
+        reservedQueue = qmanager.reserveQueue(rqp);
+        // Reserve queue
+        currentQueue = reser
+
+========================================================================================
+
+
+public void selectQueue() throws Exception {
+
+		if (StringUtils.isBlank(qmanager.preselectedQueue())) {
+			server.warn("No queue selected");
+			throw new Exception("No queue selected");
+		} else {
+			String selectedQueueID = qmanager.preselectedQueue();
+			server.info("Selected queue ID: " + selectedQueueID);
+			currentQueue = getQueueFromId(selectedQueueID);
+
+			if (currentQueue == null) {
+				server.debug("Queue not found");
+				return;
+			}
+			server.setNumberOfItems(currentQueue.pendingItems());
+
+			CreateItemParameters iParam = new CreateItemParameters();
+			iParam.setKey("COUNTRY");
+			iParam.setPriority(EPriority.HIGH);
+			iParam.setQueueId("65");
+			iParam.setReference("Captials");
+			qmanager.createItem(iParam);
+
+		}
+isem jo createparametre wali method hta dena
+
+==============================================================================================================
+
+public void additem() throws Exception {
+
+
+		CreateItemParameters iParam = new CreateItemParameters();
+
+
+		Map<String, String> functionalData = new HashMap<>();
+
+
+				  functionalData.put("one_key", "one_value");
+				  functionalData.put("another_key", "another_value");
+				  functionalData.put("ID", "01");
+				  functionalData.put("Name", "Divya");
+
+		iParam.setFunctionalData(functionalData);
+
+
+
+		iParam.setPriority(EPriority.HIGH);
+		iParam.setQueueId("53");
+		iParam.setKey("Details");
+		iParam.setReference("Employees");
+
+		qmanager.createItem(iParam);
+	}
+
+============================================================================================================
+
+public void searchqueue() throws Exception {
+        String queueName = "queue_new";
+        FindQueuesParameters fqp = new FindQueuesParameters();
+        fqp.setNameRegex(queueName);
+        List<IQueue> foundQueues;
+        foundQueues = qmanager.findQueues(fqp);
+
+        boolean queueExists = !foundQueues.isEmpty();
+    }
+
+

@@ -1,0 +1,50 @@
+public void openExcel() throws Exception {
+client.pause(5000);
+        int rnum = 0;
+        int cnum = 0;
+        FileInputStream fileInputStream = new FileInputStream("E:/excel.xlsx");
+        wb = new HSSFWorkbook();
+        FileOutputStream fileOutputStream = new FileOutputStream("E:/excel.xlsx");
+        Sheet sheet1 = wb.createSheet("first");
+       // Sheet sheet2 = wb.createSheet("second");
+        row = sheet1.createRow(rnum);
+        for (int i = 1; i <= 9; i++) {
+            list = browser.getDriver().findElements(By.xpath("//*[@id=\"tblAttendance\"]/thead/tr/th[" + i + "]"));
+            for (WebElement webElement : list) {
+               // str.add(webElement.getAttribute("textContent"));
+                str.add(webElement.getText());
+            }
+        }
+        server.warn(str);
+        for (String s : str) {
+            cell = row.createCell(cnum++);
+            cell.setCellValue(s);
+        }
+        client.pause(5000);
+        //For Inner elements
+
+        for (int j = 1; j <= 8; j++) {
+            rnum++;
+            for (int k = 1; k < 10; k++) {
+                data = browser.getDriver().findElements(By.xpath("//*[@id=\"tblAttendance\"]/tbody/tr[" + j + "]/td[" + k + "]"));
+                for (WebElement ww : data) {
+                    xyz.add(ww.getAttribute("textContent"));
+                }
+            }
+            server.warn(xyz);
+            // rownum =rownum+1;
+            server.warn(rnum);
+            // int count = 0;
+            int c = 0;
+            row = sheet1.createRow(rnum);
+            for (String p : xyz) {
+
+                cell = row.createCell(c++);
+                cell.setCellValue(p);
+            }
+            xyz.clear();
+        }
+        wb.write(fileOutputStream);
+        wb.close();
+
+    }

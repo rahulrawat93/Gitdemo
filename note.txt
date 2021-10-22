@@ -1,0 +1,54 @@
+// ----------------------------select Year method
+public void selectYear() throws Exception {
+    int count = 0;
+    //		String[] year = { "x", "y", "z" };
+    year[count] = browser.getDriver().findElement(By.id("optyear")).getAttribute("value");
+    server.sendScreen("Screesnshot 1 year" + year[count]);
+    while (true) {
+        if (year[count].equals(YEAR) || count >= 3) {
+            if (count >= 3) {
+                server.sendScreen("The Year you entered i.e. " + YEAR + "does not exist ");
+Pallavi Agre3:19 PM
+create queue:
+// ---------------------------------------------------
+public void createQueue() {
+    try {
+        CreateQueueParameters qParam = new  CreateQueueParameters();
+        qParam.setDescription("Queue created from xap.Attendance.nimit " + new  Date().toString());
+        qParam.setName("QueueXapAttndnc");
+        qParam.setPriority(EPriority.NORMAL);
+        qParam.setAttemptsByDefault(1);
+        newQueueId = qmanager.createQueue(qParam);
+        server.info("New Queue ID: " + newQueueId);
+    } 
+Pallavi Agre3:24 PM
+
+public void extractAttendance() throws Exception {
+    fis = new  FileInputStream("C:\\Users\
+imit.bhutani\\Downloads\\excel1.xlsx");
+    Index = 0;
+    wb = new  XSSFWorkbook();
+    sh = wb.createSheet();
+    int counter = 0;
+    Boolean exit = false;
+    for (int i = 1; i <= 9; i++) {
+        head = browser.getDriver().findElements(By.xpath("//div[@class='table-responsive']/table/thead/tr/th[" + i + "]"));
+        for (WebElement string : head) {
+            headText.add(string.getAttribute("
+Pallavi Agre3:25 PM
+writeExcels:
+// ---------------------------------------------------
+public void writeExcel() throws IOException {
+    FileOutputStream fso = new  FileOutputStream(new  File("C:\\Users\
+imit.bhutani\\Downloads\\excel1.xlsx"));
+    wb.write(fso);
+    wb.close();
+    fso.close();
+    fis.close();
+    //		ExcelFunctions ef = new ExcelFunctions();
+    //		ef.saveDataToExcel(headText, bodyText1, counter);
+    //		
+    // Win+R
+    keyboard.windows("r").pause(500);
+    // Write "wordpad" + enter
+    keyboard.type("
