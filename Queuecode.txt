@@ -8,7 +8,7 @@ public void selectYear() throws Exception {
         if (year[count].equals(YEAR) || count >= 3) {
             if (count >= 3) {
                 server.sendScreen("The Year you entered i.e. " + YEAR + "does not exist ");
-Pallavi Agre3:19 PM
+
 create queue:
 // ---------------------------------------------------
 public void createQueue() {
@@ -21,7 +21,6 @@ public void createQueue() {
         newQueueId = qmanager.createQueue(qParam);
         server.info("New Queue ID: " + newQueueId);
     } 
-Pallavi Agre3:24 PM
 
 public void extractAttendance() throws Exception {
     fis = new  FileInputStream("C:\\Users\
@@ -35,7 +34,7 @@ imit.bhutani\\Downloads\\excel1.xlsx");
         head = browser.getDriver().findElements(By.xpath("//div[@class='table-responsive']/table/thead/tr/th[" + i + "]"));
         for (WebElement string : head) {
             headText.add(string.getAttribute("
-Pallavi Agre3:25 PM
+
 writeExcels:
 // ---------------------------------------------------
 public void writeExcel() throws IOException {
